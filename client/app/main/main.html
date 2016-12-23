@@ -1,0 +1,108 @@
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1 ng-show="$ctrl.isAdmin()">Dashboard</h1>
+    <h1 ng-show="!$ctrl.isAdmin()">Blog</h1>
+    <p class="lead">WordPress Payement App</p>
+    <img src="assets/images/w-logo-blue.png" alt="I'm Yeoman">
+  </div>
+</header>
+
+<div class="container">
+  <div class="row" ng-show="$ctrl.isAdmin()">
+    <div class="col-lg-12">
+    <br>
+    <input type="submit" class="btn btn-primary" ng-click="isReplyFormOpen = !isReplyFormOpen" value="Add New Post"/>
+    <div ng-show="isReplyFormOpen" id="replyForm">
+      <br>
+      <form name="myform" role="form">
+        <div class="form-group">
+          <label for="title" class="control-label">Post id</label>
+          <input type="text" ng-model="$ctrl.newPost.post_id" class="form-control" id="post_id" placeholder="Enter the post_id ( short link to the post )" required/>
+        </div>
+        <div class="form-group">
+          <label for="title" class="control-label">Title</label>
+          <input type="text" ng-model="$ctrl.newPost.title" class="form-control" id="title" placeholder="Enter the title"/>
+        </div>
+        <div class="form-group">
+          <label for="title" class="control-label">Author</label>
+          <input type="text" ng-model="$ctrl.newPost.author" class="form-control" id="author" placeholder="Enter the author" required/>
+        </div>
+        <div class="form-group">
+          <label for="title" class="control-label">Published at</label>
+          <input type="text" ng-model="$ctrl.newPost.published_at" class="form-control" id="published_at" placeholder="jj/mm/yyyy hh:mm"/>
+        </div>
+        <div class="form-group">
+          <label for="title" class="control-label">Tags</label>
+          <input type="text" ng-model="$ctrl.newPost.tags" class="form-control" id="tags" placeholder="Enter the tags separated with ','"/>
+        </div>
+        <div class="form-group">
+          <label for="title" class="control-label">Picture url</label>
+          <input type="text" ng-model="$ctrl.newPost.picture" class="form-control" id="picture" placeholder="Enter the url"/>
+        </div>
+        <div class="form-group">
+          <label for="title" class="control-label">Category</label>
+          <input type="text" ng-model="$ctrl.newPost.category" class="form-control" id="category" placeholder="Enter the category"/>
+        </div>
+        <div class="form-group">
+          <label for="title" class="control-label">Offer</label>
+          <select ng-model="$ctrl.newPost.subscribe_offer" name="subscribe_offer" class="form-control">
+            <option selected="selected" value="0" >Free</option>
+            <option value="1">Premium</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="title" class="control-label">Content</label>
+          <input type="text" ng-model="$ctrl.newPost.content" class="form-control" id="content" placeholder="Enter the content"/>
+        </div>
+        <input type="submit" ng-disabled="!myform.$valid" class="btn btn-primary" ng-click="$ctrl.addPost()" value="Add New"/>
+        <input type="submit" class="btn btn-primary" ng-click="isReplyFormOpen = !isReplyFormOpen" value="Hide"/>
+      </form>
+    </div>
+  </div>
+</div>
+  <div class="row">
+
+    <div class="col-lg-12">
+      <br>
+      <input class="form-control" placeholder="Search" ng-model="query">
+      <br>
+      <h3>Free posts</h3>
+      <hr>
+      <br>
+      <ul class="nav nav-stacked col-md-6 col-lg-6 col-sm-12" ng-repeat="post in $ctrl.freePosts | filter:query" ng-if="post.subscribe_offer==0">
+        <li>
+          <p uib-tooltip="By : {{post.author}} at {{post.published_at}}">
+            <a uib-tooltip="Delete" ng-show="$ctrl.isAdmin()" type="button" class="close fa fa-trash" ng-click="$ctrl.deletePost(post)"></a>
+            <a href="http://{{post.post_id}}">{{post.title}}</a>
+            <br><br>
+            <img class="img-responsive" src="{{post.picture}}" alt="image">
+            <br>
+            {{post.content}}
+            <br><br>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>Premium posts</h3>
+      <hr>
+      <br>
+      <ul class="nav nav-stacked col-md-6 col-lg-6 col-sm-12" ng-repeat="post in $ctrl.premiumPosts | filter:query" ng-if="post.subscribe_offer==1">
+        <li>
+          <p uib-tooltip="By : {{post.author}} at {{post.published_at}}">
+            <a uib-tooltip="Delete" ng-show="$ctrl.isAdmin()" type="button" class="close fa fa-trash" ng-click="$ctrl.deletePost(post)"></a>
+            <a href="http://{{post.post_id}}">{{post.title}}</a>
+            <br><br>
+            <img src="{{post.picture}}" alt="image">
+            <br>
+            {{post.content}}
+            <br><br>
+          </p>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>

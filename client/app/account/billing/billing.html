@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Change payement offer</h1>
+      <hr>
+    </div>
+    <div class="col-sm-12">
+      <form ng-submit="vm.subscribe()">
+        <div class="form-group">
+          <label for="title" class="control-label">Offer</label>
+          <select ng-model="vm.payement_offer" name="payement_offer" class="form-control">
+            <option selected="selected" value="free" >Free -  0 €</option>
+            <option value="monthly">Monthly -  10.00 €</option>
+            <option value="annual">Annual -  100.00 €</option>
+          </select>
+          <br>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_YmhldqT1hnBkELz2vFeHnEnI"
+            data-name="Subscribe"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto" data-notrack>
+            </script>
+          <input type="submit" class="btn btn-primary" value="Change"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
