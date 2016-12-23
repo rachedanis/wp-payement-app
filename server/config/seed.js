@@ -20,29 +20,6 @@ User.sync()
   .then(() => User.destroy({ where: {} }))
   .then(() => {
     User.bulkCreate([{
-      name: 'Test annual',
-      email: 'annual@example.com',
-      password: 'test',
-      payement_offer: 'annual',
-      phone: '000000000',
-      address: '14 rue X 75001',
-      birthday: '22/11/1999'
-    }, {
-      name: 'Test monthly',
-      email: 'monthly@example.com',
-      password: 'test',
-      payement_offer: 'monthly',
-      phone: '828282828288',
-      address: '34 rue Z 75001',
-      birthday: '22/11/1999'
-    },{
-      name: 'Test free',
-      email: 'free@example.com',
-      password: 'test',
-      phone: '72727272727',
-      address: '33 rue P 75001',
-      birthday: '22/11/1999'
-    }, {
       role: 'admin',
       name: 'Admin',
       email: 'admin@example.com',
