@@ -9,7 +9,7 @@
 - [Bower](bower.io) (`npm install --global bower`)
 - [Ruby](https://www.ruby-lang.org) and then `gem install sass`
 - [Grunt](http://gruntjs.com/) (`npm install --global grunt-cli`)
-- [MySql](`npm install -g mysql`)
+- [MySql](http://dev.mysql.com)(`npm install -g mysql`)
 
 ### Developing
 
