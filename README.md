@@ -1,4 +1,4 @@
-# wp-payement-api
+# wp-payement-app
 
 ## Getting Started
 
