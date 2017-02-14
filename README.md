@@ -26,9 +26,3 @@ Run `grunt build` for building and `grunt serve` for preview.
 ## Testing
 
 Running `npm test` will run the unit tests with karma.
-   "socketio-jwt": "^4.2.0",
-    "serve-favicon": "^2.3.0"
-  },
-  "devDependencies": {
-    "autoprefixer": "^6.0.0",
-    "babel-core": "^6.6.5",
